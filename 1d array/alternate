@@ -1,0 +1,54 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+
+/*int check(int arr[],int n,int sum) {
+
+int neg[neg];
+	for(int i=0; i<n; i++) {
+	   	if(arr[i]<0)pos
+		if(arr[i]>0)pos++;
+	}
+return 0;
+}*/
+int solve() {
+	int n;
+	scanf("%d",&n);
+	int *arr=(int*)malloc(n*sizeof(int));
+	int *pos=(int*)malloc(n*sizeof(int));
+	int *neg=(int*)malloc(n*sizeof(int));
+	int poscount=0,negcount=0;
+
+	for(int i=0; i<n; i++) {
+		scanf("%d",&arr[i]);
+		if(arr[i]>=0)pos[poscount++]=arr[i];
+		if(arr[i]<0)neg[negcount++]=arr[i];
+	}
+
+	int i=0,p=0,N=0;
+	while(poscount>p&&N<negcount) {
+		arr[i++]=pos[p++];
+		arr[i++]=neg[N++];
+	}
+	while(poscount>p)
+		arr[i++]=pos[p++];
+	while(N<negcount)
+		arr[i++]=neg[N++];
+	for(int i=0; i<n; i++) {
+		printf("%d%s",arr[i],(i==n-1)?"":" ");
+	}
+
+	free(arr);
+	free(pos);
+	free(neg);
+	return 0;
+}
+
+int main()
+{
+	solve();
+	printf("\nHello World");
+
+	return 0;
+}
