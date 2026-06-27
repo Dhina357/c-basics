@@ -1,0 +1,61 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+// struct interval{
+//     int start;
+//     int end;
+// };
+int compare(const void* a,const void* b) {
+	return (*(int*)a-*(int*)b);
+}
+int check(int arr[],int n,int target) {
+	qsort(arr,n,sizeof(int),compare);
+	int fall=0;
+	int left=0;
+	int right=n-1;
+	while(left<right) {
+		if(arr[left]+arr[right]==target) {
+			fall=1;
+			break;
+		}
+		if(arr[left]+arr[right]<target) {
+			left++;
+		}
+		else right--;
+
+	}
+
+
+	if(fall==1) {
+		printf("YES.......");
+
+	}
+	else
+		printf("NO......");
+		return 0;
+}
+int solve() {
+	int n;
+	scanf("%d",&n);
+	int arr[n];
+	//struct interval arr[n];
+	for(int i=0; i<n; i++) {
+		scanf("%d",&arr[i]);
+	}
+	int target;
+	scanf("%d",&target);
+
+
+	check(arr,n,target);
+
+	return 0;
+}
+
+int main()
+{
+	solve();
+	printf("\nHello World");
+
+	return 0;
+}
