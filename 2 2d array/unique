@@ -1,0 +1,47 @@
+#include <stdlib.h>
+#include <stdio.h>
+int check(int* com,int n){
+    int count=1;
+    for(int i=1;i<n;i++){
+        if(com[i-1]!=com[i]){
+            com[count++]=com[i];
+        }
+    }
+    for(int i=0;i<=count;i++){
+        printf("%d ",com[i]);
+    }
+}
+int compare(const void* a, const void* b) {
+	return (*(int*)a-*(int*)b);
+}
+int solve() {
+	int n;
+	scanf("%d",&n);
+	int *arr1=(int*)calloc(n,sizeof(int));
+	for(int i=0; i<n; i++) {
+		scanf("%d",&arr1[i]);
+	}
+	int m;
+	scanf("%d",&m);
+	int *arr2=(int*)calloc(m,sizeof(int));
+	for(int i=0; i<m; i++) {
+		scanf("%d",&arr2[i]);
+	}
+	int *com=(int*)calloc(n+m,sizeof(int));
+	for(int i=0; i<n; i++) {
+		com[i]=arr1[i];
+	}
+	for(int i=0; i<m; i++) {
+		com[n+i]=arr2[i];
+	}
+	qsort(com,m+n,sizeof(int),compare);
+	check(com,n+m);
+	return 0;
+}
+int main()
+{
+	solve();
+	printf("\nHello World");
+
+	return 0;
+}

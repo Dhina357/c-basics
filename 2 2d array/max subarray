@@ -1,0 +1,48 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+//#define max 1000001
+int check(int* arr1,int n,int k){
+    int sum=0;
+    int max=0;
+    int l=0;
+for(int r=0;r<n;r++){
+     sum+=arr1[r];
+    while(r-l+1>k){
+        sum-=arr1[l];
+        l++;
+    }
+    if(max<sum)max=sum;
+}
+printf("%d",max);
+    return 0;
+   
+}
+//int compare(const void* a, const void* b) {
+//	return (*(int*)a-*(int*)b);
+
+int solve() {
+	int n;
+	scanf("%d",&n);
+	int *arr1=(int*)calloc(n,sizeof(int));
+	for(int i=0; i<n; i++) {
+		scanf("%d",&arr1[i]);
+	}
+	/*int m;
+	scanf("%d",&m);
+	int *arr2=(int*)calloc(m,sizeof(int));
+	for(int i=0; i<m; i++) {
+		scanf("%d",&arr2[i]);
+	}
+	*/int k;
+	scanf("%d",&k);
+	check(arr1,n,k);
+	return 0;
+}
+int main()
+{
+	solve();
+	printf("\nHello World");
+
+	return 0;
+}
