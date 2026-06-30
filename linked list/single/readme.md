@@ -1,8 +1,8 @@
 ### Linked List Implementation in C
 
-Below is the formatted and corrected C code for a basic singly linked list that appends and displays string data.
 
-```c
+
+```
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
