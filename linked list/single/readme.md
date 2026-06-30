@@ -1,56 +1,61 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-struct node
-{
+### Linked List Implementation in C
+
+Below is the formatted and corrected C code for a basic singly linked list that appends and displays string data.
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct node {
     char *data;
     struct node *nextNode;
-}*head=NULL;
-void append(char *name)
-{
-    //1. create memory for the node
-    struct node *newnode = (struct node*)malloc(sizeof(struct node));
-    //2. initialize the values to the node memory
+} *head = NULL;
+
+void append(char *name) {
+    // 1. create memory for the node 
+    struct node *newnode = (struct node *)malloc(sizeof(struct node));
+    
+    // 2. initialize the values to the node memory 
     newnode->data = name;
     newnode->nextNode = NULL;
-    //3. connection between them
-    if(head==NULL)
-    {
+    
+    // 3. connection between them 
+    if (head == NULL) {
         head = newnode;
-    }
-    else
-    {
+    } else {
         struct node *lastNode = head;
-        while(lastNode->nextNode!=NULL)
-        {
+        while (lastNode->nextNode != NULL) {
             lastNode = lastNode->nextNode;
         }
         lastNode->nextNode = newnode;
     }
 }
-void display()
-{
+
+void display() {
+    if (head == NULL) return;
     struct node *temp = head;
-    while(temp->nextNode!=NULL)
-    {
-        printf("%s ",temp->data);
+    while (temp->nextNode != NULL) {
+        printf("%s ", temp->data);
         temp = temp->nextNode;
     }
-    printf("%s\n",temp->data);
+    printf("%s\n", temp->data);
 }
-int main()
-{
+
+int main() {
     int n;
-    scanf("%d",&n);
-    for(int i=0;i<n;i++)
-    {
-        char *name = (char*)malloc(100+1);
-        scanf("%s",name);// c cpp java
+    scanf("%d", &n);
+    
+    for (int i = 0; i < n; i++) {
+        char *name = (char *)malloc(100 + 1);
+        scanf("%s", name);
         append(name);
     }
+    
     display();
     return 0;
 }
+```
 
 
 1. Insert a new node at beginning
