@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct node
+{
+	char *data;
+	struct node *nextNode;
+}*head=NULL;
+
+// This function remains in your code file but is no longer used for this specific rotation task
+struct node *reverse(struct node *tail) {
+	struct node *prev = NULL;
+	struct node *current = tail;
+	struct node *next = NULL;
+
+	while (current != NULL) {
+		next = current->nextNode;
+		current->nextNode = prev;
+		prev = current;
+		current = next;
+	}
+	return prev;
+}
+
+void append(char *name)
+{
+	struct node *newnode = (struct node*)malloc(sizeof(struct node));
+	newnode->data = name;
+	newnode->nextNode = NULL;
+	if(head==NULL)
+	{
+		head = newnode;
+	}
+	else
+	{
+		struct node *lastnode=head;
+		while(lastnode->nextNode!=NULL) {
+			lastnode=lastnode->nextNode;
+		}
+		lastnode->nextNode=newnode;
+	}
+}
+
+void display()
+{
+	if (head == NULL) return; 
+	struct node *temp = head;
+	while(temp->nextNode!=NULL)
+	{
+		printf("%s ",temp->data);
+		temp = temp->nextNode;
+	}
+	printf("%s\n",temp->data);
+}
+
+int solve() {
+	int n;
+	scanf("%d",&n);
+	for(int i=0; i<n; i++)
+	{
+		char *name = (char*)malloc(100+1);
+		scanf("%s",name);
+		append(name);
+	}
+	display();
+	
+	int key;
+	scanf("%d",&key);
+	
+	struct node *devNode=head;
+	int count=1;
+	key=n-key;
+
+	struct node *dummy=head;
+
+	while(devNode!=NULL) {
+		struct node *nextitrNode=devNode->nextNode;
+		if(count==key) {
+			devNode->nextNode=NULL; // 1. Cut the list after '20'
+			
+			// 2. Find the absolute last node of the second part ('60')
+			struct node *tail = nextitrNode;
+			while(tail->nextNode != NULL) {
+				tail = tail->nextNode;
+			}
+			
+			// 3. Connect '60' back to the old head ('10')
+			tail->nextNode = dummy; 
+			
+			// 4. Update the global head pointer to '30'
+			head = nextitrNode; 
+			break;
+		}
+		
+		count++;
+		devNode=nextitrNode;
+	}
+
+	display();
+	return 0;
+}
+
+int main()
+{
+	solve();
+	return 0;
+}
