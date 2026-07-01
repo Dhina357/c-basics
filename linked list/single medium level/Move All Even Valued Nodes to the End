@@ -1,0 +1,109 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct node
+{
+	int data;
+	struct node *nextNode;
+}*head=NULL;
+
+struct node *reverse(struct node *tail) {
+	struct node *prev = NULL;
+	struct node *current = tail;
+	struct node *next = NULL;
+
+	while (current != NULL) {
+		next = current->nextNode;
+		current->nextNode = prev;
+		prev = current;
+		current = next;
+	}
+	return prev;
+
+
+
+}
+void append(int name)
+{
+	//1. create memory for the node
+	struct node *newnode = (struct node*)malloc(sizeof(struct node));
+	//2. initialize the values to the node memory
+	newnode->data = name;
+	newnode->nextNode = NULL;
+	//3. connection between them
+	if(head==NULL)
+	{
+		head = newnode;
+	}
+	else
+	{
+		struct node *lastnode=head;
+		while(lastnode->nextNode!=NULL) {
+			lastnode=lastnode->nextNode;
+
+		}
+		lastnode->nextNode=newnode;
+
+	}
+}
+void display()
+{
+	struct node *temp = head;
+	while(temp->nextNode!=NULL)
+	{
+		printf("%d ",temp->data);
+		temp = temp->nextNode;
+	}
+	printf("%d\n",temp->data);
+}
+int solve() {
+	int n;
+	scanf("%d",&n);
+	for(int i=0; i<n; i++)
+	{
+	int name;
+		scanf("%d",&name);// c cpp java
+		append(name);
+	}
+	display();
+	struct node *evenfirst=NULL;
+	struct node *evenlast=NULL;
+		struct node *oddfirst=NULL;
+	struct node *oddlast=NULL;
+	
+		struct node *devNode=head;
+	while(devNode!=NULL) {
+	struct node *nextitrNode = devNode->nextNode; // Save next pointer
+		devNode->nextNode = NULL; 
+	     if(devNode->data%2==0){
+	         if(evenfirst==NULL){
+	             evenfirst=devNode;
+	             evenlast=devNode;
+	         }
+	         else {evenlast->nextNode=devNode;
+	         evenlast=evenlast->nextNode;}
+	     }
+		else 	{
+		   if(oddfirst==NULL){
+		       oddfirst=devNode;
+		       head=devNode;
+		       oddlast=devNode;
+		   }
+		   else{
+		       oddlast->nextNode=devNode;
+		       oddlast=oddlast->nextNode;
+		   }
+		}
+	devNode=nextitrNode;
+}
+oddlast->nextNode=evenfirst;
+evenlast->nextNode=NULL;
+	display();
+	return 0;
+
+}
+int main()
+{
+	solve();
+	return 0;
+}
