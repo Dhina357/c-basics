@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <limits.h>
+#include <stdio.h>
+int min(int a,int b){
+    return a>b?b:a;
+}
+int minsubb(int n,int arr[]){
+    int sum=0;
+    int minn=INT_MAX;
+   for(int i=0;i<n;i++){
+        sum=min(arr[i],sum+arr[i]);
+        minn=min(sum,minn);
+       
+    }
+    return minn;
+}
+int check(int n,int arr[],int sum) {
+	int minsub=minsubb(n,arr);
+	if(minsub>0) printf("%d",sum);
+	else printf("%d",sum-minsub);
+	return 0;
+}
+int solve() {
+	int n;
+	scanf("%d",&n);
+	int arr[n];
+	int sum=0;
+	for(int i=0; i<n; i++) {
+		scanf("%d",&arr[i]);
+		sum+=arr[i];
+	}
+	check(n,arr,sum);
+}
+int main()
+{
+	solve();
+
+	return 0;
+}
