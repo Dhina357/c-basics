@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node{
+    struct node *prev;
+     char *data;
+    struct node *next;
+}*head=NULL;
+
+int append(char *name){
+    struct node *newNode=(struct node*)malloc(sizeof(struct node));
+    newNode->prev==NULL;
+    newNode->data=name;
+    newNode->next=NULL;
+    if(head==NULL){
+        head=newNode;
+    }
+    else{
+        struct node *lastNode=head;
+        while(lastNode->next!=NULL){
+            lastNode=lastNode->next;
+            
+        }
+        lastNode->next=newNode;
+        newNode->prev=lastNode;
+    }
+    return 0;
+}
+
+
+int display(){
+    struct node *temp=head;
+    
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    while(temp!=NULL){
+        printf("%s ",temp->data);
+        temp=temp->prev;
+    }
+    return 0;
+}
+int solve(){
+     int n;
+     scanf("%d",&n);
+     for(int i=0;i<n;i++){
+   char *name=(char*)malloc(100+1);
+     scanf("%s",name);
+    append(name);
+      }
+      display();
+      
+     return 0;
+}
+int main(){
+    solve();
+    return 0;
+    
+}
