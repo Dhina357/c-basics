@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct node {
+	struct node *prev;
+	int data;
+	struct node *next;
+}*head=NULL;
+struct node *reverse(struct node *tail) {
+	struct node* temp=NULL;
+	struct node *current=tail;
+
+	while(current!=NULL) {
+
+		temp=current->prev;
+		current->prev=current->next;
+		current->next=temp;;
+
+
+		current=current->prev;
+
+	}
+	if(temp!=NULL) {
+		return temp->prev;
+	}
+
+	return tail;
+
+}
+int append(int name) {
+	struct node *newNode=(struct node*)malloc(sizeof(struct node));
+	newNode->prev=NULL;
+	newNode->data=name;
+	newNode->next=NULL;
+	if(head==NULL) {
+		head=newNode;
+	}
+	else {
+		struct node *lastNode=head;
+		while(lastNode->next!=NULL) {
+			lastNode=lastNode->next;
+
+		}
+		lastNode->next=newNode;
+		newNode->prev=lastNode;
+	}
+	return 0;
+}
+
+
+int display() {
+	struct node *temp=head;
+	while(temp!=NULL) {
+
+		printf("%d ",temp->data);
+		temp=temp->next;
+	}
+	printf("\n");
+	return 0;
+}
+int check(int key,int ke) {
+	struct node* temp=head;
+	while(temp!=NULL) {
+		struct node *nextitr=temp->next;
+		if((key<temp->data)&&(ke>temp->data)) {
+
+          temp->prev->next=nextitr;
+          nextitr->prev= temp->prev;
+
+		}
+		temp=nextitr;
+	}
+	return 0;
+}
+int solve() {
+	int n;
+	scanf("%d",&n);
+	for(int i=0; i<n; i++) {
+		int name;
+		scanf("%d",&name);
+		append(name);
+	}
+	display();
+	int key;
+	scanf("%d",&key);
+	int ke;
+	scanf("%d",&ke);
+	check(key,ke);
+	display();
+	return 0;
+}
+int main() {
+	solve();
+	return 0;
+
+}
