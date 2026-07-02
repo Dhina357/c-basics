@@ -61,7 +61,7 @@ int check(int key,int ke) {
 	struct node* temp=head;
 	while(temp!=NULL) {
 		struct node *nextitr=temp->next;
-		if((key<temp->data)&&(ke>temp->data)) {
+		if((key<=temp->data)&&(ke>=temp->data)) {
 
           temp->prev->next=nextitr;
           nextitr->prev= temp->prev;
