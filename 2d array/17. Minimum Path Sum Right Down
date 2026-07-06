@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int matrix[100][100];
+    int valid = 1;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix[i][j]);
+            if (matrix[i][j] != 0 && matrix[i][j] != 1) {
+                valid = 0;
+            }
+        }
+    }
+
+    if (!valid) {
+        printf("INVALID\n");
+        return 0;
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (j + 1 < m && matrix[i][j] == matrix[i][j + 1]) {
+                valid = 0;
+                break;
+            }
+            if (i + 1 < n && matrix[i][j] == matrix[i + 1][j]) {
+                valid = 0;
+                break;
+            }
+        }
+        if (!valid) break;
+    }
+
+    if (valid) {
+        printf("VALID\n");
+    } else {
+        printf("INVALID\n");
+    }
+
+    return 0;
+}
