@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int matrix[100][100];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    int max_row_idx = 0;
+    int max_consecutive = 0;
+
+    for (int i = 0; i < n; i++) {
+        int current_consecutive = 0;
+        int max_in_row = 0;
+        for (int j = 0; j < m; j++) {
+            if (matrix[i][j] == 1) {
+                current_consecutive++;
+                if (current_consecutive > max_in_row) {
+                    max_in_row = current_consecutive;
+                }
+            } else {
+                current_consecutive = 0;
+            }
+        }
+        if (max_in_row > max_consecutive) {
+            max_consecutive = max_in_row;
+            max_row_idx = i;
+        }
+    }
+
+    printf("%d %d\n", max_row_idx, max_consecutive);
+
+    return 0;
+}
