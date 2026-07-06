@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int matrix[105][105];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    int rings = (min(n, m) + 1) / 2;
+
+    for (int r = 0; r < rings; r++) {
+        int sum = 0;
+        int r_end = n - 1 - r;
+        int c_end = m - 1 - r;
+
+        if (r == r_end && r == c_end) {
+            sum += matrix[r][r];
+        } else if (r == r_end) {
+            for (int j = r; j <= c_end; j++) {
+                sum += matrix[r][j];
+            }
+        } else if (r == c_end) {
+            for (int i = r; i <= r_end; i++) {
+                sum += matrix[i][r];
+            }
+        } else {
+            for (int j = r; j <= c_end; j++) {
+                sum += matrix[r][j];
+            }
+            for (int i = r + 1; i <= r_end; i++) {
+                sum += matrix[i][c_end];
+            }
+            for (int j = c_end - 1; j >= r; j--) {
+                sum += matrix[r_end][j];
+            }
+            for (int i = r_end - 1; i >= r + 1; i--) {
+                sum += matrix[i][r];
+            }
+        }
+        printf("%d ", sum);
+    }
+    printf("\n");
+
+    return 0;
+}
