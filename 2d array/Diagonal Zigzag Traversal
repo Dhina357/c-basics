@@ -1,0 +1,32 @@
+#include <stdio;h>
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int matrix[100][100];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    for (int k = 0; k <= n + m - 2; k++) {
+        if (k % 2 == 0) {
+            int r = (k < n - 1) ? k : n - 1;
+            while (r >= 0 && k - r < m) {
+                printf("%d ", matrix[r][k - r]);
+                r--;
+            }
+        } else {
+            int r = (0 > k - m + 1) ? 0 : k - m + 1;
+            while (r < n && k - r >= 0) {
+                printf("%d ", matrix[r][k - r]);
+                r++;
+            }
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
