@@ -1,0 +1,193 @@
+#include <stdio.h>
+
+int main()
+{
+	printf(" \nWelcome to Online Shopping");
+	printf("\n1. Shoes\n2. Watches\n3. Mobiles");
+
+	int n;
+	printf("\nEnter the choice(1-3): ");
+	scanf("%d",&n);
+
+	switch (n) {
+	case 1:
+
+		printf(" \nWelcome to Anil Shoes");
+		printf("\n1. Nike\n2. Puma\n3. Zudio");
+		
+
+		int a;
+		printf("\nEnter the brand(1-3) : ");
+		scanf("%d",&a);
+
+		switch (a) {
+		case 1:
+			printf("\nYou have selected Nike \nChoose a model and size");
+		    printf("\n1. Nike Air Max - Pay 5000 \n2. Nike Downtown Casual - Pay 3500");
+                    int s1;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &s1);
+                    switch(s1) {
+                        case 1: printf("\nYou bought Nike Air Max for 5000"); break;
+                        case 2: printf("\nYou bought Nike Downtown Casual for 3500"); break;
+                        default: printf("\nInvalid shoe model"); break;
+                    }
+				break;
+		case 2:
+				printf("\nYou have selected Puma \nChoose a model and size");
+			
+			printf("\n1. Puma Suede Classic - Pay 4000 \n2. Puma Urban Sneaker - Pay 2500");
+                    int s2;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &s2);
+                    switch(s2) {
+                        case 1: printf("\nYou bought Puma Suede Classic for 4000"); break;
+                        case 2: printf("\nYou bought Puma Urban Sneaker for 2500"); break;
+                        default: printf("\nInvalid shoe model"); break;
+                    }
+					break;
+				case 3:
+					printf("\nYou have selected Zudio ");
+					 printf("\n1. Zudio Casual Loafer - Pay 800 \n2. Zudio Canvas Shoe - Pay 500");
+                    int s3;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &s3);
+                    switch(s3) {
+                        case 1: printf("\nYou bought Zudio Casual Loafer for 800"); break;
+                        case 2: printf("\nYou bought Zudio Canvas Shoe for 500"); break;
+                        default: printf("\nInvalid shoe model"); break;
+                    }
+						break;
+					default:
+						printf("\nInvalid choice");
+					}
+
+
+					break;
+				case 2:
+
+					printf(" \nWelcome to Anil watches");
+					
+					printf("\n1. Titan\n2. Rolex\n3. Fireboult");
+
+					int b;
+					printf("\nEnter the choice(1-3): ");
+					scanf("%d",&b);
+
+					switch (b) {
+					case 1:
+						printf("\nYou have selected Titan");
+                               printf("\n1. Titan Neo (Analog) - Pay 2000 \n2. Titan Smart - Pay 5000");
+                    int w1;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &w1);
+                    switch(w1) {
+                        case 1: printf("\nYou bought Titan Neo for 2000"); break;
+                        case 2: printf("\nYou bought Titan Smart for 5000"); break;
+                        default: printf("\nInvalid watch model"); break;
+                    }
+						break;
+					case 2:
+						printf("\nYou have selected Rolex");
+						 printf("\n1. Submariner - Pay 50000 \n2. Datejust - Pay 45000");
+                    int w2;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &w2);
+                    switch(w2) {
+                        case 1: printf("\nYou bought Rolex Submariner for 50000"); break;
+                        case 2: printf("\nYou bought Rolex Datejust for 45000"); break;
+                        default: printf("\nInvalid watch model"); break;
+                    }
+						break;
+					case 3:
+						printf("\nYou have selected Fireboult");
+						  printf("\n1. Ninja Call - Pay 1500 \n2. Talk Pro - Pay 2500");
+                    int w3;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &w3);
+                    switch(w3) {
+                        case 1: printf("\nYou bought Fireboult Ninja Call for 1500"); break;
+                        case 2: printf("\nYou bought Fireboult Talk Pro for 2500"); break;
+                        default: printf("\nInvalid watch model"); break;
+                    }
+						break;
+					default:
+						printf("\nInvalid choice");
+					}
+
+					break;
+				case 3:
+
+					printf(" \nWelcome to Anil Mobiles");
+					
+					printf("\n1. Moto \n2. Realme\n3. Redmi");
+
+					int c;
+					printf("\nEnter the choice(1-3): ");
+					scanf("%d",&c);
+
+					switch (c) {
+					case 1:
+						printf("\nYou have selected Moto ");
+                          printf("\n1. Moto G84 (128GB) - Pay 18000 \n2. Moto Edge 40 (256GB) - Pay 30000");
+                    int m1;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &m1);
+                    switch(m1) {
+                        case 1: printf("\nYou bought Moto G84 for 18000"); break;
+                        case 2: printf("\nYou bought Moto Edge 40 for 30000"); break;
+                        default: printf("\nInvalid mobile model"); break;
+                    }
+						break;
+					case 2:
+						printf("\nYou have selected Realme ");
+						 printf("\n1. Realme 11 Pro - Pay 22000 \n2. Realme C55 - Pay 11000");
+                    int m2;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &m2);
+                    switch(m2) {
+                        case 1: printf("\nYou bought Realme 11 Pro for 22000"); break;
+                        case 2: printf("\nYou bought Realme C55 for 11000"); break;
+                        default: printf("\nInvalid mobile model"); break;
+                    }
+						break;
+					case 3:
+						printf("\nYou have selected Redmi ");
+						 printf("\n1. Redmi Note 13 - Pay 17000 \n2. Redmi 12 - Pay 10000");
+                    int m3;
+                    printf("\nEnter your choice: ");
+                    scanf("%d", &m3);
+                    switch(m3) {
+                        case 1: printf("\nYou bought Redmi Note 13 for 17000"); break;
+                        case 2: printf("\nYou bought Redmi 12 for 10000"); break;
+                        default: printf("\nInvalid mobile model"); break;
+                    }// This block will execute
+						break;
+					default:
+						printf("\nInvalid choice");
+					}
+printf("\nPayment Type \n 1: UPI \n2: Cash");
+				int pay;
+				scanf("%d",&pay);
+				switch(pay){
+				    case 1:int pay_confirm;
+        printf("\n\nPlease scan the QR code to complete your payment.");
+        printf("\nPress 1 after completing the transaction: ");
+        scanf("%d", &pay_confirm);
+        
+        if(pay_confirm == 1) {
+            printf("\nPayment successful! Thank you for paying the exact bill amount.");
+        } else {
+            printf("\nPayment failed or cancelled by user.");
+        }
+    };break:
+				    case 2:printf("Payment complete! Exact bill amount received.")
+				}
+					break;
+				default:
+					printf("\nInvalid choice");
+				}
+
+printf("\nThank you Come Again :->");
+				return 0;
+			}
