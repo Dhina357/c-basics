@@ -1,0 +1,22 @@
+#include<stdio.h>
+int pattern(int a) {
+	for(int i=1; i<=a; i++) { //row
+		for(int j=1; j<=a; j++) { //column
+			if((i==1||i==a)||(j==1||j==a))printf("*");//star
+			else printf(" ");//space
+		}
+		printf("\n");//next line
+	}
+	return 0;
+}
+int solve() {
+	int n,count;
+	scanf("%d%n",&n,&count);
+	pattern(n);
+
+	return 0;
+}
+int main() {
+	solve();
+	return 0;
+}

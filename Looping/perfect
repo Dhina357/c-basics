@@ -1,0 +1,27 @@
+
+#include <stdio.h>
+int factors(int a) {
+	int sum=0;
+
+	for(int i=1; i<=a/2; i++) {
+		if(a%i==0)sum+=i;
+
+
+	}
+
+	return sum;
+}
+int solve() {
+	int count,n;
+	scanf("%d%n",&n,&count);
+	int b=factors(n);
+	if(b==n)printf("perfect");
+	else if(b<n)printf("defecient");
+	else printf("abudant");
+	return 0;
+}
+int main()
+{
+	solve();
+	return 0;
+}

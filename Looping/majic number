@@ -1,0 +1,26 @@
+#include<stdio.h>
+int digitssum(int a) {
+	int sum=0;
+	while(a!=0) { //add alll digits
+		sum+=a%10;
+		a/=10;//reduce digits one by one
+
+	}
+	if(sum<10)printf("\n%d",sum);
+	else {
+		printf("\n%d",sum);
+		digitssum(sum);
+	}
+	return 0;
+}
+int solve() {
+	int n,count;
+	scanf("%d%n",&n,&count);
+	digitssum(n);
+
+	return 0;
+}
+int main() {
+	solve();
+	return 0;
+}
