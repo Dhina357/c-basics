@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    if (scanf("%d", &n) != 1) return 0;
+
+    int matrix[100][100];
+    int main_sum = 0;
+    int anti_sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+            if (i == j) {
+                main_sum += matrix[i][j];
+            }
+            if (i + j == n - 1) {
+                anti_sum += matrix[i][j];
+            }
+        }
+    }
+
+    int diff = main_sum - anti_sum;
+    if (diff < 0) {
+        diff = -diff;
+    }
+
+    printf("%d\n", diff);
+
+    return 0;
+}
