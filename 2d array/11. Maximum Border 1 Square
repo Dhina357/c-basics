@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+int main() {
+    int n, m;
+    if (scanf("%d %d", &n, &m) != 2) return 0;
+
+    int matrix[105][105];
+    int top[105][105] = {0};
+    int left[105][105] = {0};
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            scanf("%d", &matrix[i][j]);
+            if (matrix[i][j] == 1) {
+                top[i][j] = (i == 0) ? 1 : top[i - 1][j] + 1;
+                left[i][j] = (j == 0) ? 1 : left[i][j - 1] + 1;
+            }
+        }
+    }
+
+    int max_side = 0;
+
+    for (int i = n - 1; i >= 0; i--) {
+        for (int j = m - 1; j >= 0; j--) {
+            int small = min(top[i][j], left[i][j]);
+            while (small > max_side) {
+                if (left[i - small + 1][j] >= small && top[i][j - small + 1] >= small) {
+                    max_side = small;
+                }
+                small--;
+            }
+        }
+    }
+
+    printf("%d\n", max_side);
+    return 0;
+}
