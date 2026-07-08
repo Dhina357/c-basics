@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct stack {
+	char val;
+	struct stack *next;
+};
+typedef struct stack s1;
+s1 *top=NULL;
+int push(char data) {
+	s1 *newNode=(s1*)malloc(sizeof(s1));
+	newNode->val=data;
+	newNode->next=NULL;
+	if(top==NULL) {
+		top=newNode;
+	}
+	else {
+		newNode->next=top;
+		top=newNode;
+
+	}
+	return 0;
+}
+int pop() {
+	top=top->next;
+	return 0;
+}
+// int display() {
+// 	s1 *last=top;
+// 	while(last->next!=NULL) {
+// 		printf("%c",last->val);
+// 		pop();
+// 	}
+// 	printf("%c",last->val);
+// 	return 0;
+// }
+int check(char *arr) {
+    int flag=1;
+     for(int i=0; arr[i]!='\0'; i++) {
+	    if(arr[i]=='('||arr[i]=='['||arr[i]=='{'){	
+		          push(arr[i]);
+	    }
+	    else if ((arr[i]==')'&&top->val!='(')||(arr[i]==']'&&top->val!='[')||(arr[i]=='}'&&top->val!='{')){
+	        printf("Not a Valid ....");
+	        flag=0;
+	        break;
+	    }
+	    else pop();
+	}
+	if(flag==1)printf("Valid....");
+	return 0;
+}
+int solve() {
+
+	char *name=(char*)malloc(100000);
+	scanf("%s",name);
+
+	
+	
+	check(name);
+	return 0;
+}
+int main()
+{
+	solve();
+	return 0;
+}
