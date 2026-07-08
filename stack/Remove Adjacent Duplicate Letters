@@ -1,0 +1,100 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct stack {
+	char val;
+	struct stack *next;
+};
+typedef struct stack s1;
+s1 *top=NULL;
+int push(char data) {
+	s1 *newNode=(s1*)malloc(sizeof(s1));
+	newNode->val=data;
+
+		newNode->next=top;
+		top=newNode;
+
+	
+	return 0;
+}
+int pop() {
+	 if (top == NULL) return -1; // Stack underflow safety check
+    
+    s1 *temp = top;
+    top = top->next;
+    free(temp);
+	return 0;
+}
+int reverse()
+{
+     if (top == NULL) {
+        printf("EMPTY\n");
+        return 0;
+    }
+    
+    char *string =(char*)malloc(100000);
+    int count=0;
+   
+    while(top!=NULL){
+        string[count++]=top->val;
+        pop();
+        
+     }
+     
+    int l=0,r=count-1;
+    while(l<r){
+        char temp=string[l];
+        string[l]=string[r];
+        string[r]=temp;
+        l++;
+        r--;
+    }
+    string[count]='\0';
+     char *strings =(char*)realloc(string,count+1);
+     
+    printf("\n%s ",strings);
+    
+    return 0;
+}
+
+int display() {
+     if (top == NULL) {
+        printf("EMPTY\n");
+        return 0;
+    }
+	s1 *last=top;
+	while(last->next!=NULL) {
+		printf("%c ",last->val);
+	last=last->next;
+	}
+	printf("%c \n",last->val);
+	return 0;
+}
+int check(char *arr) {
+   
+    push(arr[0]);
+     for(int i=1; arr[i]!='\0'; i++) {
+        
+	    if(top != NULL&&arr[i]!=top->val){	
+		          push(arr[i]);
+	    }
+	    else pop();
+	    }
+	   
+	
+   
+	return 0;
+}
+int solve() {
+char *name=(char*)malloc(100000);
+	scanf("%s",name);
+	check(name);
+	display();
+	reverse();
+	
+	return 0;
+}
+int main()
+{
+	solve();
+	return 0;
+}
