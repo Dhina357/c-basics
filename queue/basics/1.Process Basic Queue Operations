@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int queue[5];
+int rear=-1,front=-1;
+int isfull() {
+	return (rear == 4); // Since size is 5, max index is 4
+}
+int size() {
+	return rear-front+1;
+
+}
+int enqueue(int val) {
+	if (isfull()) {
+		printf("FULL");
+		return -1;
+	}
+	if(rear==-1) {
+		rear=front=0;
+		queue[rear]=val;
+	}
+	else {
+		queue[++rear]=val;
+	}
+	return 0;
+}
+int isempty() {
+	return (front==-1)||(front>rear);
+}
+int dequeue() {
+	if (isempty()) {
+		printf("\nEMPTY");
+		return -1;
+	}
+printf("\n%d",queue[front]);
+	int temp = queue[front];
+	front++;
+	if (front > rear) {
+		front = rear = -1;
+	}
+	return temp;
+}
+int display() {
+	while(!isempty()) {
+
+		printf("%d ",queue[front++]);
+	}
+	return 0;
+}
+int solve() {
+    setvbuf(stdout, NULL, _IOFBF, 8192);
+
+	int n;
+	scanf("%d",&n);
+	for(int i=0; i<n; i++) {
+		char *name=(char *)malloc(10);
+		scanf("%s",name);
+		if(strcmp("ENQUEUE",name)==0) {
+			int a;
+			scanf("%d",&a);
+			enqueue(a);
+		}
+		else if(strcmp("DEQUEUE",name)==0) {
+			dequeue();
+		}
+		else if(strcmp("SIZE",name)==0) {
+			printf("\n%d",size());
+		}
+			else if(strcmp("FRONT",name)==0) {
+			printf("\n%d",queue[front]);
+		}
+
+		// 	enqueue(10);
+		// 	enqueue(20);
+		//   printf("Dequeued element: %d\n", dequeue());
+		// 	enqueue(40);
+		// 	enqueue(50);
+		//   printf("Dequeued element: %d\n", dequeue());
+		// 	enqueue(60);
+		// 	enqueue(90);
+		// 	enqueue(40);
+}
+		display();
+
+		return 0;
+	}
+	int main() {
+		solve();
+		return 0;
+	}
